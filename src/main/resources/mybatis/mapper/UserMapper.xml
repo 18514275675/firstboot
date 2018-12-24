@@ -32,6 +32,12 @@
         for update
     </select>
 
+    <select id="getList" parameterType="com.luheng.model.UserEntity" resultType="com.luheng.model.UserEntity" >
+        SELECT
+        id,userName,passWord,user_sex as userSex,nick_name as nickName
+        FROM users
+    </select>
+
     <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
         SELECT
         <include refid="Base_Column_List" />

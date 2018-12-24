@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -78,5 +80,13 @@ public class HelloController {
         user.setId(3l);
         helloService.updateWithLock(user);
         return "/myHtml.html";
+    }
+
+    @RequestMapping("/getJsonData")
+    @ResponseBody
+    public List<UserEntity> getJsonData(UserEntity user){
+        List<UserEntity> list = helloService.getList(user);
+        System.out.println(user.getUserName());
+        return list;
     }
 }

@@ -18,4 +18,6 @@ public interface UserMapper {
     void delete(Long id);
 
     public UserEntity selectUserWithLock(UserEntity userEntity);
+
+    public List<UserEntity> getList(UserEntity userEntity);
 }
