@@ -1,8 +1,12 @@
 package com.luheng.controller;
 
 import com.luheng.configuration.ReadProperties;
+import com.luheng.enums.UserSexEnum;
 import com.luheng.mapper.UserMapper;
 import com.luheng.model.UserEntity;
+import com.luheng.service.HelloService;
+import com.luheng.service.impl.HelloServiceImpl;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -10,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //@RestController
@@ -26,11 +31,16 @@ public class HelloController {
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
+    private HelloService helloService;
+
+    @Autowired
     private RedisTemplate redisTemplate;
 
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    SqlSessionTemplate sqlSessionTemplate;
     //此处返回值为Json格式,因为本类上添加了@RestController注解,会将控制器方法的返回值自动转为json
     @RequestMapping("/HelloSpringBoot")
     public String hello(){
@@ -64,6 +74,9 @@ public class HelloController {
 
         //此处未引用thymeleaf模板引擎,在未配置任何mvc前缀,后缀的情况下,默认跳转到src/resources/static文件夹中的页面
         //若引用了thymeleaf模板引擎,则默认跳转到src/resources/templates文件夹中的页面
+        UserEntity user = new UserEntity();
+        user.setId(3l);
+        helloService.updateWithLock(user);
         return "/myHtml.html";
     }
 }

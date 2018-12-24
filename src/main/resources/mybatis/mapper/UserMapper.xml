@@ -19,6 +19,19 @@
         FROM users
     </select>
 
+    <select id="selectUserWithLock" resultType="com.luheng.model.UserEntity"  >
+        SELECT
+        id,
+        userName AS userName,
+        passWord AS passWord,
+        user_sex AS userSex,
+        nick_name AS nickName
+        FROM users
+        where
+        id=#{id}
+        for update
+    </select>
+
     <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
         SELECT
         <include refid="Base_Column_List" />

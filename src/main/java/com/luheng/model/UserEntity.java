@@ -62,10 +62,4 @@ public class UserEntity implements Serializable {
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
-
-    @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return "userName " + this.userName + ", pasword " + this.passWord + "sex " + userSex.name();
-    }
 }
