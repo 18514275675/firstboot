@@ -77,8 +77,16 @@ public class HelloController {
         //此处未引用thymeleaf模板引擎,在未配置任何mvc前缀,后缀的情况下,默认跳转到src/resources/static文件夹中的页面
         //若引用了thymeleaf模板引擎,则默认跳转到src/resources/templates文件夹中的页面
         UserEntity user = new UserEntity();
-        user.setId(3l);
-        helloService.updateWithLock(user);
+//        user.setId(3l);
+//        helloService.updateWithLock(user);
+        for (int i = 0; i < 9999; i++) {
+            user.setUserName("test_"+i);
+            user.setPassWord("pwd_"+i);
+            user.setNickName(i+"");
+            userMapper.insert(user);
+            System.out.println("---->"+i);
+
+        }
         return "/myHtml.html";
     }
 
