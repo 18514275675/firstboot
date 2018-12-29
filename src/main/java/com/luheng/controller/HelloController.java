@@ -79,14 +79,13 @@ public class HelloController {
         UserEntity user = new UserEntity();
 //        user.setId(3l);
 //        helloService.updateWithLock(user);
-        for (int i = 0; i < 9999; i++) {
-            user.setUserName("test_"+i);
-            user.setPassWord("pwd_"+i);
-            user.setNickName(i+"");
-            userMapper.insert(user);
-            System.out.println("---->"+i);
-
-        }
+//        for (int i = 0; i < 9999; i++) {
+//            user.setUserName("test_"+i);
+//            user.setPassWord("pwd_"+i);
+//            user.setNickName(i+"");
+//            userMapper.insert(user);
+//            System.out.println("---->"+i);
+//        }
         return "/myHtml.html";
     }
 
